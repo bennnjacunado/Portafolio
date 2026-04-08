@@ -1,0 +1,359 @@
+/* HOJA DE ESTILOS CSS (Cascading Style Sheets) */
+
+body {
+    font-family: 'Inter', sans-serif; 
+    .titulo-principal,
+    .titulo-secundario {
+    font-family: 'Oswald', sans-serif;
+    }
+    background-color: #FFF2D8;
+    margin: 0; /* Elimina el margen blanco que los navegadores ponen por defecto */
+    transition: background-color 0.3s, color 0.3s; /* Prepara el terreno para un cambio de tema suave */
+}
+
+nav {
+    background-color: #FFF2D8; /* Color de fondo del menú (azul muy oscuro para contrastar) */
+    padding: 15px; /* Genera espacio interno para que el menú no quede apretado */
+    position: sticky; /* Hace que el menú se quede "pegado" al hacer scroll hacia abajo */
+    top: 0; /* Se fija exactamente en el borde superior de la pantalla */
+}
+
+nav ul {
+    list-style: none; /* Quita los puntos de la lista */
+    display: flex; /* Flexbox: transforma la lista vertical en una fila horizontal */
+    justify-content: center; /* Centra los elementos en el medio de la pantalla */
+    gap: 30px; /* Separación exacta de 30 píxeles entre cada botón */
+    margin: 0; /* Quitamos los márgenes por defecto */
+    padding: 0; /* Quitamos los rellenos por defecto */
+}
+
+nav a {
+    color: #FFF2D8; /* Color del texto del link a blanco para que resalte */
+    text-decoration: none; /* Quita la línea azul subrayada */
+    font-weight: bold; /* Pone el texto en negrita */
+}
+
+main {
+    max-width: 800px; /* Limita el ancho en monitores grandes a 800 píxeles */
+    margin: 0 auto; /* Centra el bloque: 0 margen arriba/abajo, 'auto' a los costados */
+    padding: 20px; /* Da un espacio interior para que el texto no toque los bordes */
+    
+}
+
+/* Selecciona cada división temática (Inicio, Componentes, etc.) */
+section {
+    /* ELIMINAMOS EL min-height: 80vh; QUE GENERABA EL ESPACIO GIGANTE */
+    
+    /* Espacio arriba para que el menú pegajoso no tape los títulos al hacer clic */
+    padding-top: 80px; 
+    
+    /* Espacio razonable y prolijo hacia abajo para separar las secciones */
+    margin-bottom: 60px; 
+}
+/* Centra el texto y el ícono solo en la sección de presentación */
+#inicio {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Le da un poco de color al ícono para que no quede negro básico */
+#inicio svg {
+    color: #132d57; /* Azul moderno */
+    margin-top: 15px;
+}
+
+.galeria-grid {
+    display: grid; /* Activa CSS Grid, la herramienta más potente para crear cuadrículas */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Diseño responsivo: adapta columnas al ancho disponible */
+    gap: 20px; /* Define un espacio exacto de 20 píxeles entre cada tarjeta */
+    margin-top: 30px; /* Separa la galería 30 píxeles del elemento que tenga arriba */
+}
+
+.tarjeta {
+    background-color: #EAD7BB; /* Fondo blanco para que la tarjeta resalte */
+    border: 1px solid #ddcbb1; /* Un borde gris muy sutil para delimitar la caja */
+    border-radius: 8px; /* Redondea las esquinas de la caja */
+    padding: 15px; /* Espacio interno para que el texto y la foto no toquen los bordes */
+    text-align: center; /* Centra el texto y el botón dentro de la tarjeta */
+    box-shadow: 0 4px 6px #1b1e220d; /* Genera una sombra para dar efecto de profundidad */
+}
+
+.tarjeta img {    
+    width: 100%; /* La imagen ocupará siempre el 100% del ancho disponible en su tarjeta */
+    height: 200px; /* Fija una altura exacta para uniformidad */
+    object-fit: cover; /* Evita que la foto se deforme al forzarle la altura */
+    border-radius: 5px; /* Redondea las esquinas de la foto */
+}
+
+.boton-accion {
+    background-color: #113946; /* Color de fondo azul moderno */
+    color: #FFF2D8; /* Texto en blanco para contrastar */
+    border: none; /* Quita el borde estándar de los navegadores */
+    padding: 10px 15px; /* Relleno interno del botón */
+    border-radius: 5px; /* Redondea las esquinas del botón */
+    cursor: pointer; /* Transforma el cursor en una mano indicando interactividad */
+    margin-top: 10px; /* Margen superior para separación */
+    display: inline-block;
+    white-space: normal;
+    line-height: 1.4;
+}
+dialog {
+    border: none; /* Quita el borde por defecto */
+    border-radius: 10px; /* Redondea la ventana */
+    padding: 25px; /* Espacio interno de la ventana */
+    max-width: 500px; /* Ancho máximo en pantallas grandes */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3); /* Sombra pronunciada para destacar */
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.7); /* Oscurece el fondo de la página al abrirse */
+}
+/* --- ETAPA 6: TOQUES FINALES (FOOTER, ANIMACIONES Y RESPONSIVE) --- */
+
+/* 1. DISEÑO DEL FOOTER */
+footer {
+    background-color: #113946;
+    color: #516b74;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 60px; /* Lo separa del contenido principal */
+    font-size: 0.9rem;
+}
+
+/* 2. MICRO-ANIMACIONES (EFECTO ANTIGRAVEDAD) */
+/* Seleccionamos las tarjetas e indicamos que cualquier cambio debe ser fluido (0.3 segundos) */
+.tarjeta {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Pseudo-clase ':hover' (detecta cuando el puntero del mouse pasa por encima) */
+.tarjeta:hover {
+    /* translateY(-10px) levanta la tarjeta 10 píxeles hacia arriba simulando flotar */
+    transform: translateY(-10px);
+    
+    /* Aumentamos la sombra debajo para reforzar el efecto 3D de que se separó del fondo */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.boton-accion {
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.boton-accion:hover {
+    background-color: #274d5a; /* Azul más oscuro al pasar el mouse */
+    transform: scale(1.05); /* El botón "late" o crece un 5% */
+}
+
+/* 3. MEDIA QUERIES (PUNTOS DE RUPTURA PARA CELULARES) */
+/* Todo el código dentro de esta regla SOLO se ejecutará si la pantalla mide 600px de ancho o menos */
+@media screen and (max-width: 600px) {
+    
+    /* Modificamos el menú para que los botones se apilen en vertical en vez de estar en fila */
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px; /* Reducimos el espacio entre botones */
+    }
+
+    /* Achicamos los títulos principales para que no se desborden de la pantalla del celular */
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    /* Reducimos el relleno interno de la ventana modal para ganar espacio */
+    dialog {
+        padding: 15px;
+        width: 95%; /* Aprovechamos casi todo el ancho de la pantallita */
+    }
+}
+/* --- ETAPA 7: MODO OSCURO Y BOTÓN FLOTANTE --- */
+
+.interruptor-tema {
+    position: fixed;
+    top: 60px;
+    right: 15px;
+    z-index: 1000;
+    
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    color: #334155;
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.interruptor-tema:hover {
+    transform: scale(1.1) rotate(10deg); 
+}
+
+body.modo-oscuro {
+    background-color: #2C3930;
+    color: #DCD7C9;
+}
+
+body.modo-oscuro .interruptor-tema {
+    color: #151411;
+}
+
+body.modo-oscuro .tarjeta {
+    background-color: #3F4F44;
+    border: 1px solid #37453b;
+    color: #f8fafc;
+}
+
+body.modo-oscuro dialog {
+    background-color: #3b281e;
+    color: #f8fafc;
+}
+
+body.modo-oscuro a {
+    color: #dcc9c9;
+}
+
+/*base de datos*/
+.BasedeDatos {
+    text-align: center; 
+    margin-top: 40px; 
+    padding: 25px; 
+    background-color: #f3d5d0; /* Color gris clarito elegante para el modo día */
+    border-radius: 8px; /* Bordes redondeados acordes al resto del sitio */
+    transition: background-color 0.3s, color 0.3s; /* Transición suave para el cambio de tema */
+}
+
+/* Regla para que la caja se oscurezca cuando activamos el Modo Oscuro */
+body.modo-oscuro .BasedeDatos {
+    background-color: #1e293b; /* Fondo azul noche profundo */
+    border: 1px solid #334155; /* Borde sutil para que no se pierda en el fondo oscuro */
+}
+/* --- ETAPA 9: ESTILOS DE LA CAJA DESTACADA (MANTENIMIENTO) --- */
+
+.caja-destacada {
+    text-align: center; 
+    margin-top: 40px; 
+    padding: 25px; 
+    background-color: #f3d5d0; /* Color gris clarito elegante para el modo día */
+    border-radius: 8px; /* Bordes redondeados acordes al resto del sitio */
+    transition: background-color 0.3s, color 0.3s; /* Transición suave para el cambio de tema */
+}
+
+/* Regla para que la caja se oscurezca cuando activamos el Modo Oscuro */
+body.modo-oscuro .caja-destacada {
+    background-color: #1e293b; /* Fondo azul noche profundo */
+    border: 1px solid #334155; /* Borde sutil para que no se pierda en el fondo oscuro */
+}
+
+/* --- ETAPA 10: ESTÉTICA DEL SEGUIDOR DE CURSOR --- */
+/* Puntito del centro */
+#cursor-dot {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    background-color: white;
+    border-radius: 50%;
+    
+    pointer-events: none;
+    z-index: 9999;
+
+    transform: translate(-50%, -50%);
+}
+
+/* Círculo exterior (el seguidor) */
+#cursor-outline {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    border: 2px solid white; /* SOLO BORDE */
+    border-radius: 50%;
+    
+    pointer-events: none;
+    z-index: 9998;
+
+    transform: translate(-50%, -50%);
+    
+    transition: all 0.15s ease-out; /* efecto suave */
+}
+
+/* --- ETAPA 11: GLASSMORPHISM Y SCROLLBAR --- */
+
+/* Modificamos el menú para que parezca de cristal (tipo Windows 11 o macOS) */
+nav {
+    background-color: rgba(30, 41, 59, 0.8) !important; /* Azul oscuro con 80% de opacidad */
+    backdrop-filter: blur(10px); /* Pide a la tarjeta gráfica que desenfoque lo que pasa por detrás */
+    -webkit-backdrop-filter: blur(10px); /* Soporte para navegadores basados en Safari */
+}
+
+/* Personalización del Scrollbar (Barra de desplazamiento) */
+::-webkit-scrollbar {
+    width: 10px; /* Ancho de la barra */
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f5f9; /* Color de la pista o "carril" */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #28293e; /* Color azul moderno para la barrita móvil */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #3a3b59/* Azul más oscuro al pasar el mouse */
+}
+
+#inicio {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+/* HERO */
+.hero {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    text-align: center;
+}
+
+/* TITULOS */
+.titulo-principal {
+    font-size: 100px;
+    font-weight: 700;
+    letter-spacing: 6px;
+    margin: 0;
+    margin-bottom: -25px;
+}
+
+.titulo-secundario {
+    font-size: 100px;
+    font-weight: 300;
+    letter-spacing: 6px;
+    margin: 0;
+}
+
+/* SUB */
+.hero-sub {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.hero-sub p:first-child {
+    font-size: 40px;
+    margin: 0;
+    margin-bottom: 0px;
+}
+
+.hero-sub p:last-child {
+    font-size: 16px;
+    margin: 0;
+}
+
+.interruptor-tema img {
+    width: 40px;
+    height: 40px;
+}
