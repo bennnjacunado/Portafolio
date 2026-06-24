@@ -97,6 +97,12 @@ section {
     white-space: normal;
     line-height: 1.4;
 }
+
+.tarjeta a {
+    display: block;
+    margin-top: 10px;
+}
+|1
 dialog {
     border: none; /* Quita el borde por defecto */
     border-radius: 10px; /* Redondea la ventana */
