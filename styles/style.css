@@ -4,18 +4,20 @@ body {
     font-family: 'Inter', sans-serif; 
     .titulo-principal,
     .titulo-secundario {
-    font-family: 'Oswald', sans-serif;
+        font-family: 'Oswald', sans-serif;
     }
-    background-color: #FFF2D8;
+    background-color: #F6E2B3;
+    color: #274C56;
     margin: 0; /* Elimina el margen blanco que los navegadores ponen por defecto */
     transition: background-color 0.3s, color 0.3s; /* Prepara el terreno para un cambio de tema suave */
 }
 
 nav {
-    background-color: #FFF2D8; /* Color de fondo del menú (azul muy oscuro para contrastar) */
-    padding: 15px; /* Genera espacio interno para que el menú no quede apretado */
-    position: sticky; /* Hace que el menú se quede "pegado" al hacer scroll hacia abajo */
-    top: 0; /* Se fija exactamente en el borde superior de la pantalla */
+    background-color: #274C56;
+    padding: 15px;
+    position: sticky;
+    top: 0;
+    z-index: 10000;
 }
 
 nav ul {
@@ -28,7 +30,7 @@ nav ul {
 }
 
 nav a {
-    color: #FFF2D8; /* Color del texto del link a blanco para que resalte */
+    color: #F6E2B3; /* Color del texto del link para que resalte sobre el nav oscuro */
     text-decoration: none; /* Quita la línea azul subrayada */
     font-weight: bold; /* Pone el texto en negrita */
 }
@@ -36,29 +38,29 @@ nav a {
 main {
     max-width: 800px; /* Limita el ancho en monitores grandes a 800 píxeles */
     margin: 0 auto; /* Centra el bloque: 0 margen arriba/abajo, 'auto' a los costados */
-    padding: 20px; /* Da un espacio interior para que el texto no toque los bordes */
-    
+    padding: 0 20px 20px 20px; /* Se quitó el espacio de arriba (0) para eliminar la línea crema */
 }
 
 /* Selecciona cada división temática (Inicio, Componentes, etc.) */
 section {
-    /* ELIMINAMOS EL min-height: 80vh; QUE GENERABA EL ESPACIO GIGANTE */
-    
     /* Espacio arriba para que el menú pegajoso no tape los títulos al hacer clic */
     padding-top: 80px; 
     
     /* Espacio razonable y prolijo hacia abajo para separar las secciones */
     margin-bottom: 60px; 
 }
+
 /* Centra el texto y el ícono solo en la sección de presentación */
 #inicio {
     text-align: center;
     margin-top: 20px;
+    padding-top: 0 !important;
+    margin-top: 0 !important;
 }
 
 /* Le da un poco de color al ícono para que no quede negro básico */
 #inicio svg {
-    color: #132d57; /* Azul moderno */
+    color: #274C56; /* Azul de la paleta */
     margin-top: 15px;
 }
 
@@ -70,12 +72,12 @@ section {
 }
 
 .tarjeta {
-    background-color: #EAD7BB; /* Fondo blanco para que la tarjeta resalte */
-    border: 1px solid #ddcbb1; /* Un borde gris muy sutil para delimitar la caja */
+    background-color: #F2D49A; /* Tono cálido derivado de la paleta para resaltar sobre el fondo */
+    border: 1px solid rgba(231, 168, 78, 0.5); /* Borde sutil en tono dorado de la paleta */
     border-radius: 8px; /* Redondea las esquinas de la caja */
     padding: 15px; /* Espacio interno para que el texto y la foto no toquen los bordes */
     text-align: center; /* Centra el texto y el botón dentro de la tarjeta */
-    box-shadow: 0 4px 6px #1b1e220d; /* Genera una sombra para dar efecto de profundidad */
+    box-shadow: 0 4px 6px rgba(39, 76, 86, 0.12); /* Sombra sutil con tinte azul de la paleta */
 }
 
 .tarjeta img {    
@@ -86,8 +88,8 @@ section {
 }
 
 .boton-accion {
-    background-color: #113946; /* Color de fondo azul moderno */
-    color: #FFF2D8; /* Texto en blanco para contrastar */
+    background-color: #274C56; /* Azul oscuro de la paleta */
+    color: #F6E2B3; /* Texto en tono crema para contrastar */
     border: none; /* Quita el borde estándar de los navegadores */
     padding: 10px 15px; /* Relleno interno del botón */
     border-radius: 5px; /* Redondea las esquinas del botón */
@@ -102,6 +104,7 @@ section {
     display: block;
     margin-top: 10px;
 }
+
 dialog {
     border: none; /* Quita el borde por defecto */
     border-radius: 10px; /* Redondea la ventana */
@@ -111,14 +114,15 @@ dialog {
 }
 
 dialog::backdrop {
-    background-color: rgba(0, 0, 0, 0.7); /* Oscurece el fondo de la página al abrirse */
+    background-color: rgba(39, 76, 86, 0.75); /* Oscurece el fondo de la página al abrirse, con tinte de la paleta */
 }
+
 /* --- ETAPA 6: TOQUES FINALES (FOOTER, ANIMACIONES Y RESPONSIVE) --- */
 
 /* 1. DISEÑO DEL FOOTER */
 footer {
-    background-color: #113946;
-    color: #516b74;
+    background-color: #274C56;
+    color: rgba(246, 226, 179, 0.75);
     text-align: center;
     padding: 30px 20px;
     margin-top: 60px; /* Lo separa del contenido principal */
@@ -126,18 +130,13 @@ footer {
 }
 
 /* 2. MICRO-ANIMACIONES (EFECTO ANTIGRAVEDAD) */
-/* Seleccionamos las tarjetas e indicamos que cualquier cambio debe ser fluido (0.3 segundos) */
 .tarjeta {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Pseudo-clase ':hover' (detecta cuando el puntero del mouse pasa por encima) */
 .tarjeta:hover {
-    /* translateY(-10px) levanta la tarjeta 10 píxeles hacia arriba simulando flotar */
     transform: translateY(-10px);
-    
-    /* Aumentamos la sombra debajo para reforzar el efecto 3D de que se separó del fondo */
-    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    box-shadow: 0 15px 30px rgba(39, 76, 86, 0.2);
 }
 
 .boton-accion {
@@ -145,22 +144,18 @@ footer {
 }
 
 .boton-accion:hover {
-    background-color: #274d5a; /* Azul más oscuro al pasar el mouse */
+    background-color: #3E8E7E; /* Verde azulado de la paleta al pasar el mouse */
     transform: scale(1.05); /* El botón "late" o crece un 5% */
 }
 
 /* 3. MEDIA QUERIES (PUNTOS DE RUPTURA PARA CELULARES) */
-/* Todo el código dentro de esta regla SOLO se ejecutará si la pantalla mide 600px de ancho o menos */
 @media screen and (max-width: 600px) {
-    
-    /* Modificamos el menú para que los botones se apilen en vertical en vez de estar en fila */
     nav ul {
         flex-direction: column;
         align-items: center;
         gap: 15px; /* Reducimos el espacio entre botones */
     }
 
-    /* Achicamos los títulos principales para que no se desborden de la pantalla del celular */
     h1 {
         font-size: 1.5rem;
     }
@@ -169,24 +164,23 @@ footer {
         font-size: 1.2rem;
     }
 
-    /* Reducimos el relleno interno de la ventana modal para ganar espacio */
     dialog {
         padding: 15px;
         width: 95%; /* Aprovechamos casi todo el ancho de la pantallita */
     }
 }
-/* --- ETAPA 7: MODO OSCURO Y BOTÓN FLOTANTE --- */
+
+/* --- ETAPA 7: MODO OSCURO (NUEVA PALETA ARMONIZADA) --- */
 
 .interruptor-tema {
     position: fixed;
     top: 60px;
     right: 15px;
     z-index: 1000;
-    
     background: transparent;
     border: none;
     font-size: 2rem;
-    color: #334155;
+    color: #274C56;
     cursor: pointer;
     transition: transform 0.2s ease, color 0.3s ease;
 }
@@ -195,134 +189,157 @@ footer {
     transform: scale(1.1) rotate(10deg); 
 }
 
+/* Fondo principal oscuro derivado del azul petróleo */
 body.modo-oscuro {
-    background-color: #2C3930;
-    color: #DCD7C9;
+    background-color: #18282E;
+    color: #F6E2B3;
 }
 
 body.modo-oscuro .interruptor-tema {
-    color: #151411;
+    color: #F6E2B3;
 }
 
+/* Tarjetas y ventanas en azul slate oscuro con borde dorado sutil */
 body.modo-oscuro .tarjeta {
-    background-color: #3F4F44;
-    border: 1px solid #37453b;
-    color: #f8fafc;
+    background-color: #213840;
+    border: 1px solid rgba(231, 168, 78, 0.3);
+    color: #F6E2B3;
 }
 
 body.modo-oscuro dialog {
-    background-color: #3b281e;
-    color: #f8fafc;
+    background-color: #213840;
+    color: #F6E2B3;
 }
 
+/* Enlaces destacados en dorado cálido */
 body.modo-oscuro a {
-    color: #dcc9c9;
+    color: #E7A84E;
 }
 
-/*base de datos*/
+/* base de datos */
 .BasedeDatos {
     text-align: center; 
     margin-top: 40px; 
     padding: 25px; 
-    background-color: #f3d5d0; /* Color gris clarito elegante para el modo día */
+    background-color: #F2D49A; /* Tono cálido de la paleta para el modo día */
     border-radius: 8px; /* Bordes redondeados acordes al resto del sitio */
     transition: background-color 0.3s, color 0.3s; /* Transición suave para el cambio de tema */
 }
 
-/* Regla para que la caja se oscurezca cuando activamos el Modo Oscuro */
 body.modo-oscuro .BasedeDatos {
-    background-color: #1e293b; /* Fondo azul noche profundo */
-    border: 1px solid #334155; /* Borde sutil para que no se pierda en el fondo oscuro */
+    background-color: #213840;
+    border: 1px solid rgba(231, 168, 78, 0.3);
 }
+
 /* --- ETAPA 9: ESTILOS DE LA CAJA DESTACADA (MANTENIMIENTO) --- */
 
 .caja-destacada {
     text-align: center; 
     margin-top: 40px; 
     padding: 25px; 
-    background-color: #f3d5d0; /* Color gris clarito elegante para el modo día */
+    background-color: #F2D49A; /* Tono cálido de la paleta para el modo día */
     border-radius: 8px; /* Bordes redondeados acordes al resto del sitio */
     transition: background-color 0.3s, color 0.3s; /* Transición suave para el cambio de tema */
 }
 
-/* Regla para que la caja se oscurezca cuando activamos el Modo Oscuro */
 body.modo-oscuro .caja-destacada {
-    background-color: #1e293b; /* Fondo azul noche profundo */
-    border: 1px solid #334155; /* Borde sutil para que no se pierda en el fondo oscuro */
+    background-color: #213840;
+    border: 1px solid rgba(231, 168, 78, 0.3);
 }
 
 /* --- ETAPA 10: ESTÉTICA DEL SEGUIDOR DE CURSOR --- */
-/* Puntito del centro */
 #cursor-dot {
     position: fixed;
     width: 6px;
     height: 6px;
     background-color: white;
     border-radius: 50%;
-    
     pointer-events: none;
     z-index: 9999;
-
     transform: translate(-50%, -50%);
 }
 
-/* Círculo exterior (el seguidor) */
 #cursor-outline {
     position: fixed;
     width: 30px;
     height: 30px;
-    border: 2px solid white; /* SOLO BORDE */
+    border: 2px solid white;
     border-radius: 50%;
-    
     pointer-events: none;
     z-index: 9998;
-
     transform: translate(-50%, -50%);
-    
-    transition: all 0.15s ease-out; /* efecto suave */
+    transition: all 0.15s ease-out;
 }
 
 /* --- ETAPA 11: GLASSMORPHISM Y SCROLLBAR --- */
 
-/* Modificamos el menú para que parezca de cristal (tipo Windows 11 o macOS) */
 nav {
-    background-color: rgba(30, 41, 59, 0.8) !important; /* Azul oscuro con 80% de opacidad */
-    backdrop-filter: blur(10px); /* Pide a la tarjeta gráfica que desenfoque lo que pasa por detrás */
-    -webkit-backdrop-filter: blur(10px); /* Soporte para navegadores basados en Safari */
+    background-color: rgba(39, 76, 86, 0.82) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
-/* Personalización del Scrollbar (Barra de desplazamiento) */
 ::-webkit-scrollbar {
-    width: 10px; /* Ancho de la barra */
+    width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #f1f5f9; /* Color de la pista o "carril" */
+    background: #F6E2B3;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #28293e; /* Color azul moderno para la barrita móvil */
-    border-radius: 5px; /* Bordes redondeados */
+    background: #274C56;
+    border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #3a3b59/* Azul más oscuro al pasar el mouse */
-}
-
-#inicio {
-    padding-top: 0 !important;
-    margin-top: 0 !important;
+    background: #3E8E7E;
 }
 
 /* HERO */
 .hero {
+    position: relative;
+    width: 100vw;
     height: 90vh;
+    margin-left: calc(50% - 50vw);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
     text-align: center;
+    overflow: hidden;
+    color: #F6E2B3;
+    background-image: url('../images/hero-olas.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(39, 76, 86, 0.45) 0%,
+        rgba(39, 76, 86, 0.55) 64%,
+        #F6E2B3 100%
+    );
+    z-index: 1;
+}
+
+.hero > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Degradado de la sección Hero hacia el fondo azul petróleo del modo oscuro */
+body.modo-oscuro .hero::before {
+    background: linear-gradient(
+        to bottom,
+        rgba(24, 40, 46, 0.45) 0%,
+        rgba(24, 40, 46, 0.65) 64%,
+        #18282E 100%
+    );
 }
 
 /* TITULOS */
@@ -332,6 +349,7 @@ nav {
     letter-spacing: 6px;
     margin: 0;
     margin-bottom: -25px;
+    text-shadow: 0 2px 20px rgba(39, 76, 86, 0.55);
 }
 
 .titulo-secundario {
@@ -339,6 +357,7 @@ nav {
     font-weight: 300;
     letter-spacing: 6px;
     margin: 0;
+    text-shadow: 0 2px 20px rgba(39, 76, 86, 0.55);
 }
 
 /* SUB */
